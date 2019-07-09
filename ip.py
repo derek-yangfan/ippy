@@ -15,6 +15,15 @@ class ip():
         "convert to subnet int"
         subnet1 = func.ip_to_subnet(self.address)
         return func.ip_to_long(subnet1)
+    
+    def get_rednum(self,cursor):
+        "get rednum for IP address"
+        subnet_str = func.ip_to_subnet(self.address)
+        sql = "select red_num from net where red = '%s'"%subnet_str
+        cursor.execute(sql)
+        result = cursor.fetchone()
+        red_num = str(result[0])
+        return red_num
 
     def check_ip(self, cursor):
         "检查IP是否已经存在"
@@ -31,11 +40,14 @@ class ip():
 
     def new_ip(self, cursor):
         "新建IP记录"
-        sql = """INSERT INTO HOST(HOSTNAME,
-                IP, ALIVE, LAST_RESPONSE) 
-                VALUES ('new_scan', '%s', 1,  1562296665)"""%self.address
+        ip_addr = str(self.address)
+        ip_str = func.long_to_ip(self.address)
+        red_num = ip.get_rednum(self,cursor)
+        sql = """INSERT INTO `host` (`ip`, `hostname`, 
+            `loc`, `red_num`, `categoria`, `int_admin`, `update_type`, `alive`, `range_id`, `ip_version`, `client_id`) 
+             VALUES ('%s', 'new_scan', '1', '%s', '1', 'n', '3', '1', '-1', 'v4', '1')"""%(ip_addr, red_num)
         cursor.execute(sql)
-        print("IP: %s is added")%self.address
+        print("IP: %s is added"%ip_str)
 
     def update_ip(self, cursor):
         "更新IP记录"

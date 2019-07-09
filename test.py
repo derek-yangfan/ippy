@@ -14,7 +14,12 @@ settings1 = settings.settings()
 db = settings1.db_connect()
 cursor = db.cursor()
 
-ip_obj.check_ip(cursor)
+#ip_obj.get_rednum(cursor)
+ip_obj.new_ip(cursor)
+
+
+
+#ip_obj.check_ip(cursor)
 
 db.commit()
 db.close()

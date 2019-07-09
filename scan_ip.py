@@ -1,34 +1,26 @@
 import os,time
 import sys
 import socket, struct
-import ip
-import settings
 import functions as func
 
+IPbegin = (input(u'请输入起始查询IP： '))
+IPend = input(u'请输入终止查询IP： ')
+ip_start = func.ip_to_long(IPbegin)
+ip_end = func.ip_to_long(IPend)
+ip_subnet = func.ip_to_subnet(IPbegin)
 
 #定义文件路径
 print("当前路径 -> %s" %os.getcwd())
 current_path = os.path.dirname(__file__)
 
-start_Time=int(time.time())
-ip_True = open(current_path + '/ip_True.txt','w+')
-ip_False = open(current_path + '/ip_False.txt','w+')
+#打开TXT文件记录ping结果
 
-
-#IPhost = []
-#IPbegin = (input(u'请输入起始查询IP： '))
-#IPend = input(u'请输入终止查询IP： ')
-
-#IP1 = IPbegin.split('.')[0]
-#IP2 = IPbegin.split('.')[1]
-#IP3 = IPbegin.split('.')[2]
-#IP4 = IPbegin.split('.')[-1]
-#IPend_last = IPend.split('.')[-1]
-
-ip_start = func.ip_to_long(input(u'请输入起始查询IP： '))
-ip_end = func.ip_to_long(input(u'请输入终止查询IP： '))
-
+ip_True = open(current_path + '/files/ip_True_%s.txt'%ip_subnet,'w+')
+ip_False = open(current_path + '/files/ip_False_%s.txt'%ip_subnet,'w+')
 count_True,count_False = 0,0
+
+start_Time=int(time.time())
+
 
 for ip in range(ip_start, ip_end):
   ip = func.long_to_ip(ip)

@@ -6,7 +6,7 @@ class settings():
     #Define db information
         self.hostname = "10.243.16.101"
         self.username = "root"
-        self.password = "Goto2030!"
+        self.password = "Client2db!"
         self.dbname = "gestioip"
 
     def db_connect(self):
