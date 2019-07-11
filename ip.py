@@ -1,4 +1,5 @@
 import functions as func
+import time
 
 
 class ip():
@@ -40,18 +41,20 @@ class ip():
 
     def new_ip(self, cursor):
         "新建IP记录"
+        tt = str(time.time())
         ip_addr = str(self.address)
         ip_str = func.long_to_ip(self.address)
         red_num = ip.get_rednum(self,cursor)
         sql = """INSERT INTO `host` (`ip`, `hostname`, 
-            `loc`, `red_num`, `categoria`, `int_admin`, `update_type`, `alive`, `range_id`, `ip_version`, `client_id`) 
-             VALUES ('%s', 'new_scan', '1', '%s', '1', 'n', '3', '1', '-1', 'v4', '1')"""%(ip_addr, red_num)
+            `loc`, `red_num`, `categoria`, `int_admin`, `update_type`, `alive`, `last_response`, `range_id`, `ip_version`, `client_id`) 
+             VALUES ('%s', 'new_scan', '1', '%s', '1', 'n', '3','1', '%s', '-1', 'v4', '1')"""%(ip_addr, red_num,tt)
         cursor.execute(sql)
         print("IP: %s is added"%ip_str)
 
     def update_ip(self, cursor):
         "更新IP记录"
-        sql = "update host set alive = 1 where ip = '%s'" %self.address
+        tt = str(time.time())
+        sql = "update host set alive = 1, last_response = %s where ip = '%s'" %(tt, self.address)
         print(sql)
         cursor.execute(sql)  
 

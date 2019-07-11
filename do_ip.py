@@ -9,7 +9,7 @@ import settings
 if __name__ == "__main__":
     #定义文件路径
     print("当前路径 -> %s" %os.getcwd())
-    current_path = os.path.dirname(__file__)
+    current_path = 'z:/ip/'
 
     """Initial connection to DB"""
     settings1 = settings.settings()
@@ -20,12 +20,12 @@ if __name__ == "__main__":
 
     #ip_obj.tackle_ip(cursor)
 
-    for filename in os.listdir(current_path+"/files/"):
-        if 'ip_True' in filename:
+    for filename in os.listdir(current_path):
+        if 'alive' in filename:
             print(filename)
 
             #读取txt文件行
-            f = open(current_path + "/files/%s"%filename)
+            f = open(current_path + filename)
             lines = f.readlines()
             for line in lines:
                 line = line.strip("\n")

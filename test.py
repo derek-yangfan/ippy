@@ -1,6 +1,7 @@
 import ip
 import settings
 import functions
+import time 
 
 IPbegin = (input(u'请输入起始查询IP： '))
 ip_obj = ip.ip(IPbegin)
@@ -23,3 +24,7 @@ ip_obj.new_ip(cursor)
 
 db.commit()
 db.close()
+"""
+print (time.time())
+
+"""
