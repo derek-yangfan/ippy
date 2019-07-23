@@ -1,29 +1,18 @@
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div>Home Page</div>
+    <br>
     {% for ip in hosts %}
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3>
-          {{ ip.ip }}
-          
-        </h3>
-      </div>
-      <div class="panel-body">
-        {{ ip.hostname }}
-      </div>
-
-    </div> <!-- panel -->
-    {% endfor %}
-
-    {% for e in id %}
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3>
-          {{ e }}
-          
-        </h3>
+        <li>
+          {{ ip.ip }} - {{ ip.hostname }}        
+        </li>
       </div>
       
-
     </div> <!-- panel -->
     {% endfor %}
-</body>
+
+{% endblock %}

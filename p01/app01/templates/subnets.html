@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>This is subnet page</p>
+{% for subnet in subnets %}
+<p>{{ subnet.red}}</p>
+{% endfor %}
+{% endblock %}

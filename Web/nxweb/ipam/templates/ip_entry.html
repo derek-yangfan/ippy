@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Details about IP address in subnet:</p>
+<table>
+        <tr>
+                <th>ip</th>
+                <th>hostname</th>
+                <th>loc</th>
+                <th>alive</th>
+            
+            </tr>       
+{% for ip in hosts %}
+
+<tr>
+    <td>
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        {{ ip.ip }}
+                        
+                    </h3>
+            </div>
+        </div> 
+    </td>
+
+    <td>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>
+                    {{ ip.hostname }}
+                    
+                </h3>
+            </div>
+        </div> 
+    </td>
+
+    <td>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        {{ ip.loc }}
+                        
+                    </h3>
+                </div>
+            </div> 
+        </td>
+    <td>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>
+                    {{ ip.alive}}
+                    
+                </h3>
+            </div>
+        </div> 
+    </td>
+    
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

@@ -519,7 +519,8 @@ class Net(models.Model):
     bm = models.CharField(db_column='BM', max_length=3)  # Field name made lowercase.
     descr = models.CharField(max_length=100, blank=True, null=True)
     red_num = models.SmallIntegerField(primary_key=True)
-    loc = models.SmallIntegerField()
+    #loc = models.SmallIntegerField()
+    loc = models.ForeignKey('Locations', on_delete=models.CASCADE)
     vigilada = models.CharField(max_length=1, blank=True, null=True)
     comentario = models.CharField(max_length=500, blank=True, null=True)
     categoria = models.SmallIntegerField(blank=True, null=True)

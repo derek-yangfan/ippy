@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app01',
+    
 ]
 
 MIDDLEWARE = [
@@ -82,8 +83,10 @@ DATABASES = {
         'PASSWORD': 'root',
         'Host': 'localhost',
         'PORT': '3306',
-    }
+    },
+   
 }
+
 
 
 # Password validation

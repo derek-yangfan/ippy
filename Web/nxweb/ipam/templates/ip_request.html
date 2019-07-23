@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Request IP:</h1>
+
+<form name="input" action="/ipam/assign/" method="get">
+<select data-placeholder="选择项目..." class="form-control" name="plant" id="plant">
+    　　<option value="">请选择站点</option>
+    　　{% for subnet in subnets %}
+    　　<option value="{{ subnet.0 }}" >{{ subnet.0 }}</option>
+        {# <option value="120000" hassubinfo="true">天津</option>#}
+        {# <option value="130000" hassubinfo="true">河北省</option>#}
+    　　{% endfor %}
+</select>
+
+<select data-placeholder="选择项目..." class="form-control" name="line" id="line_name">
+    　　<option value="">请选择产线</option>
+    　　{% for subnet in subnets %}
+    　　<option value="{{ subnet.4 }}" >{{ subnet.4  }}</option>
+      
+    　　{% endfor %}
+</select>
+
+<select data-placeholder="选择项目..." class="form-control" name="cell" id="plant_name">
+    　　<option value="">请选择单元</option>
+    　　{% for subnet in subnets %}
+    　　<option value="{{ subnet.5 }}" >{{ subnet.5  }}</option>
+        
+    　　{% endfor %}
+</select>
+IP数量:<input type="text" name = "count"><br>
+<input type="submit" value="Submit">
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Browser all subnets:</p>
+<table>
+        <tr>
+                <th>网段</th>
+                <th>子网掩码</th>
+                <th>站点</th>
+                <th>产线</th>
+                <th>单元</th>
+                <th>描述</th>
+            
+            </tr>       
+{% for subnet in subnets %}
+
+<tr>
+    <td>
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        <a href = "/ipam/IP/?red_num={{ subnet.2}}">{{ subnet.0 }}</a>
+                        
+                    </h3>
+            </div>
+        </div> 
+    </td>
+
+   
+
+    <td>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        {{ subnet.1 }}
+                        
+                    </h3>
+                </div>
+            </div> 
+        </td>
+    <td>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>
+                    {{ subnet.3}}
+                    
+                </h3>
+            </div>
+        </div> 
+    </td>
+
+    <td>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>
+                    {{ subnet.4 }}
+                    
+                </h3>
+            </div>
+        </div> 
+    </td>
+
+    <td>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        {{ subnet.5}}
+                        
+                    </h3>
+                </div>
+            </div> 
+        </td>
+
+    
+    
+        <td>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        {{ subnet.6 }}
+                        
+                    </h3>
+                </div>
+            </div> 
+        </td>
+    
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+<div>
+
+    <form method="post" action="update_pur_slave">
+ {% csrf_token  %}
+ 
+  文具名称:    <select  name="id_site" id="id_site" οnchange="testajax(this);">
+         <option value="">-类别-</option>
+         {%  for site in sites   %}
+         <option value="{{ site.id }}">{{  site.name  }}</option>
+         {% endfor %}
+                      </select>
+ 
+ <select  name="id_line" id="id_line">
+         <option value="">-名称-</option>
+         {%  for line in lines   %}
+         <option value="{{ line.id }}">{{  line.name  }}</option>
+         {% endfor %}
+                      </select>
+         
+     </form>
+ 
+  </div>
+ <script language="JavaScript">
+ 
+ function testajax(ths){
+ 
+     var id=$(ths).val();
+ 
+     $.ajax({
+     type: 'GET',
+     url: 'ajax_load_line',
+     dataType: 'json',
+     data:{site_id:id},
+     success: function(ret){
+     //查询成功之后填充select option
+     var html = "";
+ 
+     //用for循环遍历返回结果。
+     for(var i=0;i<ret.length;i++){
+     var iteam = ret[i];
+     var id = iteam.id;
+ 
+     var name = iteam.name;
+ 
+     html += "<option value="+iteam.id+">"+iteam.name+"</option>";
+ 
+ }
+ $("#id_line").html(html);
+ //将新数据填充到option
+ }
+ });
+ }
+ 
+ 
+ </script>
+ 
